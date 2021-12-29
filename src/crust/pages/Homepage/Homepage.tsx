@@ -1,5 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { signOutUser } from "core/actions/authActions/authActions";
+import { AppHeader } from "crust/components";
 import { useStateDispatch } from "hooks/reduxHooks";
 
 function Homepage() {
@@ -10,12 +11,7 @@ function Homepage() {
   };
   return (
     <div>
-      <Typography variant="h4">
-        User is authenticated this is homepage..
-      </Typography>
-      <Button onClick={logoutUser} variant="contained">
-        Logout
-      </Button>
+      <AppHeader />
     </div>
   );
 }
