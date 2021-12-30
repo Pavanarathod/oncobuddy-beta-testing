@@ -7,6 +7,7 @@ import { makeStyles } from "@mui/styles";
 import SocialMedia from "./SocialMedia";
 import Divider from "@mui/material/Divider";
 import { Stack } from "@mui/material";
+import LoginForm from "./LoginForm";
 
 const useStyles = makeStyles((theme: any) => ({
   tabContainer: {
@@ -105,7 +106,7 @@ const OnboardingTab = () => {
       </Typography>
 
       <TabPanel value={value} index={0}>
-        Item One
+        <LoginForm />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
