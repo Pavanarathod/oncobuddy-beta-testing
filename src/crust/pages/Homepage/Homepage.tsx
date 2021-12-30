@@ -1,7 +1,8 @@
 import { Button, Typography } from "@mui/material";
 import { signOutUser } from "core/actions/authActions/authActions";
-import { AppHeader } from "crust/components";
-import { useStateDispatch } from "hooks/reduxHooks";
+import { modalActions } from "core/features/global/onBoardingModal";
+import { AppHeader, SigninModal } from "crust/components";
+import { useStateDispatch, useStateSelector } from "hooks/reduxHooks";
 
 function Homepage() {
   const dispatch = useStateDispatch();
@@ -9,9 +10,11 @@ function Homepage() {
   const logoutUser = () => {
     dispatch(signOutUser(false));
   };
+
   return (
     <div>
       <AppHeader />
+      <SigninModal />
     </div>
   );
 }

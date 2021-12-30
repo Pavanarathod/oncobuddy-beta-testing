@@ -1,7 +1,8 @@
 import { colors } from "@mui/material";
 import tinycolor from "tinycolor2";
 
-const primary = "#00636B";
+const primary = "#FFFFFF";
+// const primary = "#007E84";
 const secondary = "#6236FF";
 const white = "#FFFFFF";
 const black = "#000000";
