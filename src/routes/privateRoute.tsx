@@ -7,9 +7,9 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute = ({ component: Component }: PrivateRouteProps) => {
-  const { isAuthenticated } = useStateSelector((state) => state.authUser);
+  const { userData } = useStateSelector((state) => state.authUser);
 
-  return isAuthenticated ? <Component /> : <Navigate to="/signin" />;
+  return userData ? <Component /> : <Navigate to="/signin" />;
 };
 
 export default PrivateRoute;

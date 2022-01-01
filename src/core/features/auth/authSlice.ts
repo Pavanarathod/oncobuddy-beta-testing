@@ -1,22 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserAuthState {
-  isAuthenticated: boolean;
+  userData: any;
 }
 
 const initialState: UserAuthState = {
-  isAuthenticated: localStorage.getItem("isAuthenticated") ? true : false,
+  userData: localStorage.getItem("userData")
+    ? JSON.parse(localStorage.getItem("userData") || "{}")
+    : null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    loginUser(state, action: PayloadAction<boolean>) {
-      state.isAuthenticated = action.payload;
+    userSessionStore(state, action) {
+      state.userData = action.payload;
     },
-    logoutUser(state, action: PayloadAction<boolean>) {
-      state.isAuthenticated = action.payload;
+    removeUserSessionStore(state) {
+      state.userData = null;
     },
   },
 });

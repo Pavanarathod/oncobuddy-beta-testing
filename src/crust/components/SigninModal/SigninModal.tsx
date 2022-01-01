@@ -52,7 +52,7 @@ const SigninModal = (props: Props) => {
     >
       <Box className={classes.boxContainer}>
         <div className={classes.modalHeader}>
-          <Typography id="modal-modal-title" variant="h4" component="h2">
+          <Typography id="modal-modal-title" variant="h4">
             Login / Sign Up to continue
           </Typography>
           <CancelOutlinedIcon />

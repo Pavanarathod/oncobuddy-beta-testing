@@ -3,13 +3,15 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { makeStyles, withStyles } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import Button from "@mui/material/Button";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useStateDispatch } from "hooks/reduxHooks";
+import { useStateDispatch, useStateSelector } from "hooks/reduxHooks";
 import { modalActions } from "core/features/global/onBoardingModal";
+import { removeUserSessionStore } from "core/actions/authActions/authActions";
+import { firebaseUserAuth } from "cloudAuth/firebase";
 
 interface Props {}
 
@@ -65,11 +67,17 @@ const linksItem = [
 ];
 
 const AppHeader = (props: Props) => {
+  const { userData } = useStateSelector((state) => state.authUser);
   const dispatch = useStateDispatch();
   const classes = useStyles();
 
   const openModal = () => {
     dispatch(modalActions.enebleModal());
+  };
+
+  const logout = () => {
+    firebaseUserAuth.signOut();
+    dispatch(removeUserSessionStore());
   };
   return (
     <AppBar position="fixed" className={classes.appBarContainer}>
@@ -105,20 +113,25 @@ const AppHeader = (props: Props) => {
             </div>
           </div>
           <div>
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.appBarButtonOne}
-              onClick={openModal}
-            >
-              Sign in
-            </Button>
+            {userData ? (
+              <span>{userData.userName}</span>
+            ) : (
+              <Button
+                variant="contained"
+                size="large"
+                className={classes.appBarButtonOne}
+                onClick={openModal}
+              >
+                Sign in
+              </Button>
+            )}
             <Button
               variant="contained"
               size="large"
               className={classes.appBarButtonTwo}
+              onClick={logout}
             >
-              Download App
+              Sign out
             </Button>
           </div>
         </Toolbar>

@@ -1,15 +1,9 @@
-import { Button, Typography } from "@mui/material";
-import { signOutUser } from "core/actions/authActions/authActions";
-import { modalActions } from "core/features/global/onBoardingModal";
 import { AppHeader, SigninModal } from "crust/components";
-import { useStateDispatch, useStateSelector } from "hooks/reduxHooks";
+import { useStateSelector } from "hooks/reduxHooks";
 
 function Homepage() {
-  const dispatch = useStateDispatch();
-
-  const logoutUser = () => {
-    dispatch(signOutUser(false));
-  };
+  const { userData } = useStateSelector((state) => state.authUser);
+  console.log(userData);
 
   return (
     <div>

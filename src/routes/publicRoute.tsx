@@ -7,9 +7,9 @@ interface ProtectedRouteProps {
 }
 
 const PublicRoute = ({ component: Component }: ProtectedRouteProps) => {
-  const { isAuthenticated } = useStateSelector((state) => state.authUser);
+  const { userData } = useStateSelector((state) => state.authUser);
 
-  return isAuthenticated ? <Navigate to="/home" /> : <Component />;
+  return userData ? <Navigate to="/home" /> : <Component />;
 };
 
 export default PublicRoute;

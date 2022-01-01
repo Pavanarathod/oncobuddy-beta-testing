@@ -1,15 +1,16 @@
 import { authActions } from "core/features/auth/authSlice";
 
-// TODO we can implement asynchronou actions allso..  //
+// TODO we can implement async actions allso..  //
 
-const signInUser = (payload: boolean) => (dispatch: any) => {
-  dispatch(authActions.loginUser(payload));
-  localStorage.setItem("isAuthenticated", "iam a user");
+const addUserSessionStore = (payload: any) => (dispatch: any) => {
+  dispatch(authActions.userSessionStore(payload));
+
+  localStorage.setItem("userData", JSON.stringify(payload));
 };
 
-const signOutUser = (payload: boolean) => (dispatch: any) => {
-  dispatch(authActions.logoutUser(payload));
-
-  localStorage.removeItem("isAuthenticated");
+const removeUserSessionStore = () => (dispatch: any) => {
+  dispatch(authActions.removeUserSessionStore());
+  localStorage.removeItem("userData");
 };
-export { signInUser, signOutUser };
+
+export { addUserSessionStore, removeUserSessionStore };

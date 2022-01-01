@@ -5,9 +5,8 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { makeStyles } from "@mui/styles";
 import SocialMedia from "./SocialMedia";
-import Divider from "@mui/material/Divider";
-import { Stack } from "@mui/material";
 import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
 
 const useStyles = makeStyles((theme: any) => ({
   tabContainer: {
@@ -44,11 +43,7 @@ const TabPanel = (props: TabPanelProps) => {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: "0 30px" }}>{children}</Box>}
     </div>
   );
 };
@@ -109,7 +104,7 @@ const OnboardingTab = () => {
         <LoginForm />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <SignupForm />
       </TabPanel>
     </Box>
   );

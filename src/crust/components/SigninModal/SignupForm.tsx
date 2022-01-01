@@ -11,11 +11,12 @@ interface Props {}
 
 const useStyles = makeStyles(styles);
 
-const LoginForm = (props: Props) => {
+const SignupForm = (props: Props) => {
   const classes = useStyles();
   const initialValues = {
     email: "",
     password: "",
+    passwordConfirmation: "",
   };
 
   const loginValidationSchema = yup.object().shape({
@@ -27,6 +28,10 @@ const LoginForm = (props: Props) => {
       .string()
       .min(8, "Email is required")
       .required("Password is required"),
+    passwordConfirmation: yup
+      .string()
+      .required("Confirm Password")
+      .oneOf([yup.ref("password"), null], "Password must match"),
   });
 
   const signInWithEmailAndPassword = (loginData: object) => {
@@ -55,6 +60,7 @@ const LoginForm = (props: Props) => {
             />
             <TextField
               name="password"
+              type="password"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -63,6 +69,18 @@ const LoginForm = (props: Props) => {
               variant="standard"
               helperText={errors.password}
               error={!!errors.password}
+            />
+            <TextField
+              name="passwordConfirmation"
+              type="password"
+              value={values.passwordConfirmation}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              id="standard-basic"
+              label="Confirm password"
+              variant="standard"
+              helperText={errors.passwordConfirmation}
+              error={!!errors.passwordConfirmation}
             />
           </Stack>
 
@@ -88,4 +106,4 @@ const LoginForm = (props: Props) => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
