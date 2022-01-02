@@ -8,7 +8,7 @@ const white = "#FFFFFF";
 const black = "#000000";
 // const grey = '#b3b3b3';
 // const background = '#E5E5E5';
-const background = "#f4f4f4";
+const background = "#FFFFFF";
 const textPrimary = "#333333";
 const textSecondary = "#8A8A8A";
 

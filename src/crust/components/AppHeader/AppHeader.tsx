@@ -12,50 +12,13 @@ import { useStateDispatch, useStateSelector } from "hooks/reduxHooks";
 import { modalActions } from "core/features/global/onBoardingModal";
 import { removeUserSessionStore } from "core/actions/authActions/authActions";
 import { firebaseUserAuth } from "cloudAuth/firebase";
+import styles from "./styles";
+import Box from "@mui/system/Box";
+import Avatar from "@mui/material/Avatar";
 
 interface Props {}
 
-const useStyles = makeStyles((theme: any) => ({
-  appBarContainer: {
-    backgroundColor: theme.palette.background,
-    padding: "17px 0",
-  },
-  appBarBodyContainer: {},
-  toolBarContainer: {
-    marginRight: "50px",
-    marginLeft: "50px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  linkss: {
-    textDecoration: "none",
-    color: "#707070",
-  },
-  linksContainer: {
-    flex: "1",
-    marginLeft: "30px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  appBarButtonOne: {
-    border: "1px solid #0B8389",
-    borderRadius: "40px",
-  },
-  appBarButtonTwo: {
-    backgroundColor: "#0B8389",
-    borderRadius: "40px",
-    color: "#FFFFFF",
-    marginLeft: "10px",
-  },
-  appBarIconcontainer: {
-    display: "flex",
-    alignItems: "center",
-    margin: "0 20px",
-    outline: "none",
-  },
-}));
+const useStyles = makeStyles(styles);
 
 const linksItem = [
   "About",
@@ -80,60 +43,72 @@ const AppHeader = (props: Props) => {
     dispatch(removeUserSessionStore());
   };
   return (
-    <AppBar position="fixed" className={classes.appBarContainer}>
-      <Container maxWidth={false} className={classes.appBarBodyContainer}>
+    <AppBar className={classes.appBarcontainer} position="fixed">
+      <Container maxWidth="xl" className={classes.mainContainer}>
         <Toolbar className={classes.toolBarContainer} disableGutters>
-          <div>
-            <Typography variant="h1">
-              ONCO<span>BUDDY</span>
-            </Typography>
-          </div>
-          <div className={classes.linksContainer}>
-            {linksItem.map((links, index) => (
-              <Link key={index} className={classes.linkss} to={`/${links}`}>
-                {links}
-              </Link>
-            ))}
-          </div>
-          <div>
-            <div className={classes.appBarIconcontainer}>
-              <div style={{ display: "flex", alignItems: "center" }}>
+          <Box className={classes.boxOne}>
+            <Typography variant="h1">OncoBuddy</Typography>
+            <div className={classes.linksContainer}>
+              {linksItem.map((link, index) => (
+                <Link className={classes.linksItem} to={`/${link}`} key={index}>
+                  {link}
+                </Link>
+              ))}
+            </div>
+            <div className={classes.iconsContainer}>
+              <div>
                 <SearchRoundedIcon />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "10px",
-                }}
-              >
-                <Typography variant="h6">Probiders</Typography>
+              <div className={classes.iconstProvider}>
+                <Typography variant="h6">Providers</Typography>
                 <ExpandMoreIcon />
               </div>
             </div>
-          </div>
-          <div>
+          </Box>
+          <Box className={classes.buttonContainer}>
             {userData ? (
-              <span>{userData.userName}</span>
+              <div className={classes.profileContainer}>
+                {userData.userImage ? (
+                  <Avatar src={userData.userImage} />
+                ) : (
+                  <Avatar>{userData.userImage[0]}</Avatar>
+                )}
+                {/* <Typography className={classes.userName} variant="h6">
+                  {userData.userName}
+                </Typography> */}
+              </div>
             ) : (
               <Button
+                style={{
+                  backgroundColor: "transparent",
+                  border: "1px solid #303746",
+                  padding: "5px 25px",
+                  borderRadius: "50px",
+                  textTransform: "lowercase",
+                  fontSize: "15px",
+                }}
                 variant="contained"
-                size="large"
-                className={classes.appBarButtonOne}
                 onClick={openModal}
               >
-                Sign in
+                Signin
               </Button>
             )}
             <Button
+              style={{
+                backgroundColor: "#303746",
+                color: "#ffff",
+                padding: "5px 25px",
+                borderRadius: "50px",
+                textTransform: "lowercase",
+                fontSize: "15px",
+                marginLeft: "10px",
+              }}
               variant="contained"
-              size="large"
-              className={classes.appBarButtonTwo}
               onClick={logout}
             >
-              Sign out
+              Download App
             </Button>
-          </div>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

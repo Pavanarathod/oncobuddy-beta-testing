@@ -6,12 +6,18 @@ import { Form, Formik } from "formik";
 import React from "react";
 import * as yup from "yup";
 import styles from "./styles";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { firebaseUserAuth } from "cloudAuth/firebase";
+import { useStateDispatch } from "hooks/reduxHooks";
+import { modalActions } from "core/features/global/onBoardingModal";
+import { addUserSessionStore } from "core/actions/authActions/authActions";
 
 interface Props {}
 
 const useStyles = makeStyles(styles);
 
 const SignupForm = (props: Props) => {
+  const dispatch = useStateDispatch();
   const classes = useStyles();
   const initialValues = {
     email: "",
@@ -34,8 +40,27 @@ const SignupForm = (props: Props) => {
       .oneOf([yup.ref("password"), null], "Password must match"),
   });
 
-  const signInWithEmailAndPassword = (loginData: object) => {
-    console.log(loginData);
+  const signInWithEmailAndPassword = async (loginData: any) => {
+    try {
+      await createUserWithEmailAndPassword(
+        firebaseUserAuth,
+        loginData.email,
+        loginData.password
+      ).then((userCredentials) => {
+        dispatch(
+          addUserSessionStore({
+            userName: userCredentials.user.displayName
+              ? userCredentials.user.displayName
+              : "no name bro",
+            userEmail: userCredentials.user.email,
+            userId: userCredentials.user.uid,
+          })
+        );
+      });
+      dispatch(modalActions.disableModal());
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -97,7 +122,7 @@ const SignupForm = (props: Props) => {
               variant="contained"
               disabled={isSubmitting}
             >
-              Login
+              Confirm
             </Button>
           </div>
         </Form>

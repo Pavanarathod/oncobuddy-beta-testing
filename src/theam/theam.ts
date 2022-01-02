@@ -15,7 +15,7 @@ const theam = createTheme({
       sm: 450,
       md: 600,
       lg: 960,
-      xl: 1140 + 24 + 24, // layout width + padding left and right,
+      xl: 1300 + 24 + 24, // layout width + padding left and right,
     },
   },
   spacing: 8,

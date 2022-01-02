@@ -1,17 +1,8 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import React from "react";
-import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import Stack from "@mui/material/Stack";
+import GoogleIcon from "@mui/icons-material/Google";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { useStateDispatch } from "hooks/reduxHooks";
-import { modalActions } from "core/features/global/onBoardingModal";
-import {
-  signInWithPopup,
-  GoogleAuthProvider,
-  FacebookAuthProvider,
-} from "firebase/auth";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import {
   facebookAuthProvider,
   firebaseUserAuth,
@@ -19,11 +10,22 @@ import {
   twitterAuthProvider,
 } from "cloudAuth/firebase";
 import { addUserSessionStore } from "core/actions/authActions/authActions";
+import { modalActions } from "core/features/global/onBoardingModal";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+  TwitterAuthProvider,
+} from "firebase/auth";
+import { useStateDispatch } from "hooks/reduxHooks";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {}
 
 const SocialMedia = (props: Props) => {
   const dispatch = useStateDispatch();
+  const navigate = useNavigate();
 
   const signInWithgoogle = async () => {
     try {
@@ -45,6 +47,8 @@ const SocialMedia = (props: Props) => {
       );
 
       dispatch(modalActions.disableModal());
+
+      navigate("/profile");
     } catch (error: any) {
       console.log(error);
       alert(error.message);
@@ -55,7 +59,7 @@ const SocialMedia = (props: Props) => {
     try {
       await signInWithPopup(firebaseUserAuth, facebookAuthProvider).then(
         (result) => {
-          const credentials = FacebookAuthProvider.credentialFromResult(result);
+          FacebookAuthProvider.credentialFromResult(result);
           dispatch(addUserSessionStore(result.user));
         }
       );
@@ -68,7 +72,8 @@ const SocialMedia = (props: Props) => {
     try {
       await signInWithPopup(firebaseUserAuth, twitterAuthProvider).then(
         (result) => {
-          const credentials = FacebookAuthProvider.credentialFromResult(result);
+          const credentials = TwitterAuthProvider.credentialFromResult(result);
+          console.log(credentials?.accessToken);
           dispatch(addUserSessionStore(result.user));
         }
       );
