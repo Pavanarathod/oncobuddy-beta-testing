@@ -1,17 +1,20 @@
 const styles = (theme: any) => ({
+  container: {
+    marginTop: "30px",
+  },
+  gridContainer: {},
   cardContainer: {
-    marginTop: "20px",
-  },
-  cardItem: {
-    backgroundColor: "#F0F0F0",
-  },
-  cardImage: {
-    height: "100px",
-    borderRadius: "100px",
     backgroundColor: "#000",
   },
-  boxOne: {
+  cardItemContainer: {
     display: "flex",
+  },
+  secondItem: {
+    marginLeft: "30px",
+  },
+  cardIconContainer: {
+    display: "flex",
+    alignItems: "center",
   },
 });
 

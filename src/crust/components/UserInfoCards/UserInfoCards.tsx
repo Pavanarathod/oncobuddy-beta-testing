@@ -9,6 +9,9 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { useStateSelector } from "hooks/reduxHooks";
 import Divider from "@mui/material/Divider";
+import AccessibilityIcon from "@mui/icons-material/Accessibility";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
 
 interface Props {}
 
@@ -17,69 +20,50 @@ const useStyles = makeStyles(styles);
 const UserInfoCards = (props: Props) => {
   const { userData } = useStateSelector((state) => state.authUser);
   const classes = useStyles();
+
+  const cardStyle = {
+    backgroundColor: "#F0F0F0",
+    width: "100%",
+  };
+
+  const Item = styled(Paper)(({ theme }) => ({
+    textAlign: "center",
+    color: "#000",
+  }));
+
   return (
-    <Stack className={classes.cardContainer} direction="row" spacing={5}>
-      <Card
-        style={{
-          backgroundColor: "#F0F0F0",
-        }}
-        sx={{ minWidth: 405 }}
-      >
-        <CardContent>
-          <Box className={classes.boxOne}>
+    <div className={classes.container}>
+      <Grid style={{ gap: 20 }} container>
+        <Card style={cardStyle}>
+          <CardContent className={classes.cardItemContainer}>
             <div>
-              {userData.userImage ? (
-                <Avatar
-                  sx={{ height: "120px", width: "120px" }}
-                  src={userData.userImage}
-                />
-              ) : (
-                <Avatar>{userData.userName[0]}</Avatar>
-              )}
+              <Avatar
+                sx={{ height: "100px", width: "100px" }}
+                src={userData.userImage}
+              ></Avatar>
             </div>
-            <div
-              style={{
-                marginLeft: "30px",
-              }}
-            >
-              <Typography variant="h5">Insurence</Typography>
+            <div className={classes.secondItem}>
+              <Typography>Insurence</Typography>
               <Typography variant="h3">{userData.userName}</Typography>
-              <Typography variant="h5">Fever </Typography>
-              <Stack direction="row" spacing={1}>
-                <Typography>Age 20</Typography>
-                <Typography>Weight 62kg </Typography>
-                <Typography>Blood </Typography>
-              </Stack>
+              <Typography>Covid 19 | Final stage</Typography>
+
+              <div style={{ marginTop: 5 }}></div>
             </div>
-          </Box>
-        </CardContent>
-      </Card>
-      <Card sx={{ minWidth: 405 }}>
-        <CardContent>
-          <h1>somehtingelse.</h1>
-        </CardContent>
-      </Card>
-      <Card sx={{ minWidth: 405 }}>
-        <CardContent>
-          <h1>somehtingelse.</h1>
-        </CardContent>
-      </Card>
-    </Stack>
+          </CardContent>
+        </Card>
+        <Card style={cardStyle}>
+          <CardContent>
+            <h1>okay</h1>
+          </CardContent>
+        </Card>
+        <Card style={cardStyle}>
+          <CardContent>
+            <Typography>Pavan kumar</Typography>
+          </CardContent>
+        </Card>
+      </Grid>
+    </div>
   );
 };
 
 export default UserInfoCards;
-
-{
-  /* <div style={{}} className={classes.cardContainer}>
-<div className={classes.cardItem}>
-  <h1>Profile image</h1>
-</div>
-<div className={classes.cardItem}>
-  <h1>Chart</h1>
-</div>
-<div className={classes.cardItem}>
-  <h1>Annual Progress.</h1>
-</div>
-</div> */
-}
