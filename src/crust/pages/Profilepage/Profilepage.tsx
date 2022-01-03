@@ -1,31 +1,25 @@
-import { AppHeader } from "crust/components";
-import React from "react";
+import { AppHeader, ProfileHeader, UserInfoCards } from "crust/components";
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@mui/styles";
+import styles from "./styles";
+import Container from "@mui/material/Container";
+import Appbar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 
 interface Props {}
 
+const useStyles = makeStyles(styles);
+
 const Profilepage: React.FC = () => {
+  const classes = useStyles();
+
   return (
     <>
       <AppHeader />
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
-      <h1>Welcome to profile page..</h1>
+      <Container maxWidth="xl">
+        <ProfileHeader />
+        <UserInfoCards />
+      </Container>
     </>
   );
 };

@@ -12,6 +12,7 @@ import { useStateDispatch, useStateSelector } from "hooks/reduxHooks";
 import { modalActions } from "core/features/global/onBoardingModal";
 import { removeUserSessionStore } from "core/actions/authActions/authActions";
 import { firebaseUserAuth } from "cloudAuth/firebase";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 import styles from "./styles";
 import Box from "@mui/system/Box";
 import Avatar from "@mui/material/Avatar";
@@ -43,7 +44,7 @@ const AppHeader = (props: Props) => {
     dispatch(removeUserSessionStore());
   };
   return (
-    <AppBar className={classes.appBarcontainer} position="fixed">
+    <AppBar className={classes.appBarcontainer} position="sticky">
       <Container maxWidth="xl" className={classes.mainContainer}>
         <Toolbar className={classes.toolBarContainer} disableGutters>
           <Box className={classes.boxOne}>

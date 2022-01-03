@@ -9,7 +9,7 @@ const ApplicationRoute: React.FC = () => {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route
-          path="/profile"
+          path="/profile/:tabId"
           element={<PrivateRoute component={ProfilePage} />}
         />
       </Routes>

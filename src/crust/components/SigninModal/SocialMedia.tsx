@@ -48,7 +48,7 @@ const SocialMedia = (props: Props) => {
 
       dispatch(modalActions.disableModal());
 
-      navigate("/profile");
+      navigate("/profile/myprofile");
     } catch (error: any) {
       console.log(error);
       alert(error.message);
