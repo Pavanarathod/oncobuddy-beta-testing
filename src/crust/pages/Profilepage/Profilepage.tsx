@@ -1,10 +1,13 @@
-import { AppHeader, ProfileHeader, UserInfoCards } from "crust/components";
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@mui/styles";
-import styles from "./styles";
 import Container from "@mui/material/Container";
-import Appbar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
+import { makeStyles } from "@mui/styles";
+import {
+  AppHeader,
+  ProfileHeader,
+  UserInfoCards,
+  UserTabs,
+} from "crust/components";
+import React from "react";
+import styles from "./styles";
 
 interface Props {}
 
@@ -19,6 +22,7 @@ const Profilepage: React.FC = () => {
       <Container maxWidth="xl">
         <ProfileHeader />
         <UserInfoCards />
+        <UserTabs />
       </Container>
     </>
   );

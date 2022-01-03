@@ -16,6 +16,10 @@ const styles = (theme: any) => ({
     display: "flex",
     alignItems: "center",
   },
+  circulerProgressive: {
+    color: "#5BC8CE",
+    height: "100px",
+  },
 });
 
 export default styles;
