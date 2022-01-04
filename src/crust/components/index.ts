@@ -5,3 +5,4 @@ export { default as ProfileHeader } from "./ProfileHeader";
 export { default as UserInfoCards } from "./UserInfoCards";
 export { default as UserTabs } from "./UserTabs";
 export { default as UserProfileForms } from "./UserProfileForms";
+export { default as UserProfileTab } from "./UserProfileTab";

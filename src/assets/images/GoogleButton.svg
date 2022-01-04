@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="236" height="39" viewBox="0 0 236 39">
+  <g id="Group_3790" data-name="Group 3790" transform="translate(-838 -420)">
+    <rect id="Rectangle_923" data-name="Rectangle 923" width="236" height="39" rx="5" transform="translate(838 420)" fill="#d9534f"/>
+    <path id="Rectangle_924" data-name="Rectangle 924" d="M5,0H47a0,0,0,0,1,0,0V39a0,0,0,0,1,0,0H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0Z" transform="translate(838 420)" fill="#e48d8b"/>
+    <text id="Sign_in_with_Google_" data-name="Sign in with Google " transform="translate(967 446)" fill="#fff" font-size="16" font-family="OpenSans, Open Sans"><tspan x="-73" y="0">Sign in with Google </tspan></text>
+    <path id="_843776_google_icon" data-name="843776_google_icon" d="M21.258,11.619q-4.129,0-8.257,0c0,1.142,0,2.283,0,3.424h4.782a4.122,4.122,0,0,1-1.757,2.71,5.016,5.016,0,0,1-1.932.763A5.726,5.726,0,0,1,12,18.509a5.154,5.154,0,0,1-1.953-.843,5.452,5.452,0,0,1-2.011-2.694,5.314,5.314,0,0,1,0-3.417A5.445,5.445,0,0,1,9.312,9.486a5.156,5.156,0,0,1,5.2-1.351A4.755,4.755,0,0,1,16.4,9.247q.809-.8,1.615-1.613c.282-.289.579-.566.853-.863a8.492,8.492,0,0,0-2.824-1.75,8.792,8.792,0,0,0-10.881,4.3,8.762,8.762,0,0,0,0,7.879,8.84,8.84,0,0,0,2.384,2.93,8.733,8.733,0,0,0,3.188,1.608,9.377,9.377,0,0,0,4.489.048,7.741,7.741,0,0,0,5.812-5.512A10.31,10.31,0,0,0,21.258,11.619Z" transform="translate(848.773 426.512)" fill="#fff"/>
+  </g>
+</svg>

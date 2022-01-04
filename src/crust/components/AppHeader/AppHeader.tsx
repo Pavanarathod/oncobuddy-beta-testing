@@ -43,6 +43,7 @@ const AppHeader = (props: Props) => {
     firebaseUserAuth.signOut();
     dispatch(removeUserSessionStore());
   };
+  console.log(userData);
   return (
     <AppBar className={classes.appBarcontainer} position="sticky">
       <Container maxWidth="xl" className={classes.mainContainer}>
@@ -69,10 +70,10 @@ const AppHeader = (props: Props) => {
           <Box className={classes.buttonContainer}>
             {userData ? (
               <div className={classes.profileContainer}>
-                {userData.userImage ? (
-                  <Avatar src={userData.userImage} />
+                {userData?.userImage ? (
+                  <Avatar src={userData?.userImage} />
                 ) : (
-                  <Avatar>{userData.userImage[0]}</Avatar>
+                  <Avatar>{userData?.userName[0]}</Avatar>
                 )}
                 {/* <Typography className={classes.userName} variant="h6">
                   {userData.userName}

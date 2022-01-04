@@ -34,7 +34,7 @@ const SignupForm = (props: Props) => {
       .required("Email is required"),
     password: yup
       .string()
-      .min(8, "Email is required")
+      .min(8, "Password is required")
       .required("Password is required"),
     passwordConfirmation: yup
       .string()
@@ -43,26 +43,30 @@ const SignupForm = (props: Props) => {
   });
 
   const signInWithEmailAndPassword = async (loginData: any) => {
+    console.log(loginData);
     try {
-      await createUserWithEmailAndPassword(
+      const user = await createUserWithEmailAndPassword(
         firebaseUserAuth,
         loginData.email,
         loginData.password
-      ).then((userCredentials) => {
+      );
+      if (user) {
+        console.log(user);
         dispatch(
           addUserSessionStore({
-            userName: userCredentials.user.displayName
-              ? userCredentials.user.displayName
-              : "no name bro",
-            userEmail: userCredentials.user.email,
-            userId: userCredentials.user.uid,
+            userName: user.user.displayName || "John Doe",
+            userEmail: user.user.email,
+            userId: user.user.uid,
+            userImage: user.user.photoURL ? user.user.photoURL : null,
+            userAccessToken: user.user.uid,
           })
         );
-      });
-      dispatch(modalActions.disableModal());
-      navigate("/profile/myprofile");
+        dispatch(modalActions.disableModal());
+        navigate("/profile/myprofile");
+      }
     } catch (error) {
       console.log(error);
+      alert(error);
     }
   };
 
@@ -80,7 +84,7 @@ const SignupForm = (props: Props) => {
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              id="standard-basic"
+              id="email"
               label="Email"
               variant="standard"
               helperText={errors.email}
@@ -92,7 +96,7 @@ const SignupForm = (props: Props) => {
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
-              id="standard-basic"
+              id="password"
               label="Password"
               variant="standard"
               helperText={errors.password}
@@ -104,7 +108,7 @@ const SignupForm = (props: Props) => {
               value={values.passwordConfirmation}
               onChange={handleChange}
               onBlur={handleBlur}
-              id="standard-basic"
+              id="passwordConfirmation"
               label="Confirm password"
               variant="standard"
               helperText={errors.passwordConfirmation}

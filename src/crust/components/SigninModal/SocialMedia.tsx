@@ -20,6 +20,9 @@ import {
 import { useStateDispatch } from "hooks/reduxHooks";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import GoogleButton from "assets/images/GoogleButton.svg";
+import FaceBookButton from "assets/images/FaceButton.svg";
+import TwitterButton from "assets/images/TwitterButton.svg";
 
 interface Props {}
 
@@ -83,40 +86,14 @@ const SocialMedia = (props: Props) => {
   };
 
   return (
-    <Stack spacing={2}>
-      <Button
-        style={{
-          backgroundColor: "red",
-          color: "white",
-        }}
-        variant="contained"
-        startIcon={<GoogleIcon />}
-        onClick={signInWithgoogle}
-      >
-        Sign in with google
-      </Button>
-      <Button
-        style={{
-          backgroundColor: "darkblue",
-          color: "white",
-        }}
-        variant="contained"
-        startIcon={<FacebookIcon />}
-        onClick={signInWithFacebook}
-      >
-        Sign in with facebook
-      </Button>
-      <Button
-        style={{
-          backgroundColor: "skyblue",
-          color: "#000",
-        }}
-        variant="contained"
-        startIcon={<TwitterIcon />}
+    <Stack style={{ cursor: "pointer" }} spacing={2}>
+      <img src={GoogleButton} alt="googlebuttno" onClick={signInWithgoogle} />
+      <img src={FaceBookButton} alt="Facebook" onClick={signInWithFacebook} />
+      <img
+        src={TwitterButton}
+        alt="Twitterbutton"
         onClick={signInWithTwitter}
-      >
-        Sign in with twitter
-      </Button>
+      />
     </Stack>
   );
 };

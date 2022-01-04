@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="236" height="39" viewBox="0 0 236 39">
+  <g id="Group_3791" data-name="Group 3791" transform="translate(-838 -480)">
+    <rect id="Rectangle_926" data-name="Rectangle 926" width="236" height="39" rx="5" transform="translate(838 480)" fill="#428bca"/>
+    <path id="Rectangle_925" data-name="Rectangle 925" d="M5,0H47a0,0,0,0,1,0,0V39a0,0,0,0,1,0,0H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0Z" transform="translate(838 480)" fill="#82b2da"/>
+    <text id="Sign_in_with_Facebook_" data-name="Sign in with Facebook " transform="translate(977 505)" fill="#fff" font-size="16" font-family="OpenSans, Open Sans"><tspan x="-82" y="0">Sign in with Facebook </tspan></text>
+    <g id="Group_8" data-name="Group 8" transform="translate(-7 -280)">
+      <path id="Path_63" data-name="Path 63" d="M872.4,771.819h2.1v-3.657a27.122,27.122,0,0,0-3.059-.162c-3.028,0-5.1,1.9-5.1,5.4v3.221H863v4.088h3.341V791h4.1V780.714h3.206l.509-4.088h-3.715v-2.817c0-1.182.319-1.99,1.966-1.99Zm0,0" fill="#fcfcfc"/>
+    </g>
+  </g>
+</svg>
