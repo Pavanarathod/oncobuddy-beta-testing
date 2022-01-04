@@ -11,12 +11,14 @@ import { firebaseUserAuth } from "cloudAuth/firebase";
 import { useStateDispatch } from "hooks/reduxHooks";
 import { modalActions } from "core/features/global/onBoardingModal";
 import { addUserSessionStore } from "core/actions/authActions/authActions";
+import { useNavigate } from "react-router-dom";
 
 interface Props {}
 
 const useStyles = makeStyles(styles);
 
 const SignupForm = (props: Props) => {
+  const navigate = useNavigate();
   const dispatch = useStateDispatch();
   const classes = useStyles();
   const initialValues = {
@@ -58,6 +60,7 @@ const SignupForm = (props: Props) => {
         );
       });
       dispatch(modalActions.disableModal());
+      navigate("/profile/myprofile");
     } catch (error) {
       console.log(error);
     }
