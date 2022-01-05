@@ -1,11 +1,16 @@
 import React from "react";
+import { UserProfileForms } from "..";
+import { makeStyles } from "@mui/styles";
+import styles from "./styles";
 
 interface Props {}
 
+const useStyles = makeStyles(styles);
 const UserProfileTab = (props: Props) => {
+  const classes = useStyles();
   return (
-    <div>
-      <h1>this is profile tab</h1>
+    <div className={classes.container}>
+      <UserProfileForms />
     </div>
   );
 };
